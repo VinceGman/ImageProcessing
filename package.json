@@ -1,0 +1,23 @@
+{
+  "name": "imageprocessing",
+  "version": "1.0.0",
+  "description": "Image Processing Library",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/VinceGman/ImageProcessing.git"
+  },
+  "author": "Vince Gonzalez and Kibb",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/VinceGman/ImageProcessing/issues"
+  },
+  "homepage": "https://github.com/VinceGman/ImageProcessing#readme",
+  "dependencies": {
+    "fs-extra": "^10.0.0",
+    "jimp": "^0.16.1"
+  }
+}
