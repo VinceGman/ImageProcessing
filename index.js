@@ -3,12 +3,13 @@
 const Jimp = require('jimp');
 const fsExtra = require('fs-extra');
 
-let jpg = 'https://i.kym-cdn.com/photos/images/original/001/392/964/98a.jpg';
+let jpg = 'https://tesla-cdn.thron.com/delivery/public/image/tesla/c82315a6-ac99-464a-a753-c26bc0fb647d/bvlatuR/std/1200x628/lhd-model-3-social';
 // https://i.imgur.com/kNd7Ixe.png : Star Guardian
 // https://i.imgur.com/YFabdgZ.jpg : Gradient
 // https://i.imgur.com/cDseRck.png : Pokemon
 // https://i.imgur.com/5yeBVeM.jpg : Hollywood
 // https://i.kym-cdn.com/photos/images/original/001/392/964/98a.jpg : Some Dude GreenScreen
+// https://tesla-cdn.thron.com/delivery/public/image/tesla/c82315a6-ac99-464a-a753-c26bc0fb647d/bvlatuR/std/1200x628/lhd-model-3-social : Tesla
 
 // Deletes Previous Images
 fsExtra.emptyDirSync('./images');
@@ -28,7 +29,7 @@ Jimp.read(jpg)
         console.log("Image Not Processed.", err);
     });
 
-function manipulate(rbg, cf) {
+function manipulate(rbg, cf, path) {
 
     let match_lab = rgb2lab(rbg);
 
@@ -56,12 +57,12 @@ function manipulate(rbg, cf) {
             });
 
             //////////////////////
-            let path = 'manipulated.jpg';
             image.write(path, () => {
-                fsExtra.rename(path, './images/manipulated.jpg', function (err) {
+                fsExtra.rename(path, `./images/${path}`, function (err) {
                     if (err) throw err
                 });
                 console.log("Manipulated Successful!");
+                jpg = `./images/${path}`;
             });
         })
         .catch(err => {
@@ -133,4 +134,7 @@ function deltaE(labA, labB) {
     return i < 0 ? 0 : Math.sqrt(i);
 }
 
-manipulate([0, 254, 103], 15);
+manipulate([103, 1, 13], 5, "man_1.jpg");
+manipulate([103, 1, 13], 10, "man_2.jpg");
+manipulate([103, 1, 13], 15, "man_3.jpg");
+manipulate([103, 1, 13], 20, "man_4.jpg");
